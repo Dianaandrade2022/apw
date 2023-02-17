@@ -1,0 +1,23 @@
+<nav class="navbar bg-dark navbar-dark navbar-expand-lg">
+  <div class="container">
+    <a href="#" class="navbar-brand">{{title}}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasnav" >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="offcanvas offcanvas-end bg-dark" id="offcanvasnav">
+    <div class="offcanvas-header bg-light">
+      <h5>Menú</h5>
+      <button type="button" class="btn-close align-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="navbar-body bg-dark">
+      <ul class="navbar-nav text-light m-sm-2 m-lg-0 p-sm-2 p-lg-0">
+        <li class="ion-item"><a type="button" routerLink="login" class="nav-link">Iniciar sesión</a></li>
+        <li class="ion-item"><a type="button" routerLink="registro" class="nav-link">Registrarse</a></li>
+      </ul>
+    </div>
+  </div>
+
+</nav>
+
+<router-outlet></router-outlet>

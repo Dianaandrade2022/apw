@@ -1,0 +1,46 @@
+<div class="container">
+  <form class="row g-3  m-2 p-2">
+    <div class="text-center m-1">
+      <h1>{{name}}</h1>
+
+    </div>
+    <div class="col 12">
+      <label class="mb-2 mx-1">Email</label>
+      <input [(ngModel)]="usuario.email" #inputemail="ngModel" name="email" type="email" class="form-control mb-3"  placeholder="example@gmail.com" required >
+
+    </div>
+    <div class="col 12">
+      <label class="mb-2 mx-1">Contraseña</label>
+      <input [(ngModel)]="usuario.pass" #inputpass="ngModel" name="pass" type="password" class="form-control mb-3" placeholder="Contraseña" required>
+    </div>
+    <div class="col col-md-12 col-sm-12 col-lg-10">
+      <div class="grid row">
+        <div>
+          <button (click)="onregister()" class="btn btn-primary mb-3 me-3 col-lg-4 col-md-6 col-sm-12">Sign up</button>
+          <button (click)="ongoogleregister()" class="btn btn-google mb-3 me-2 col-lg-4 col-md-6 col-sm-12">Sign up Google</button>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-danger m-1 p-1 text-center" *ngIf="inputemail.invalid && inputpass.invalid">
+      Ingrese su correo y contraseña
+    </div>
+
+    <div class="alert alert-danger m-1 p-1 text-center" *ngIf="inputemail.valid  && inputpass.invalid">
+      Solo puede añadir un máximo de 18 caracteres
+    </div>
+
+    <div class="alert alert-success m-1 p-1 text-center" *ngIf="!inputemail.invalid && !inputpass.invalid ">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+      </svg> Correcto
+    </div>
+
+
+    <div class="col 6">
+      <p class="text-muted text-center">¿Tienes una cuenta? <a type="button" href="/login">Inicia sesión</a></p>
+    </div>
+
+
+  </form>
+
+  </div>
