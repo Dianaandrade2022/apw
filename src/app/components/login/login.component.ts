@@ -7,14 +7,14 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent {
+export class LoginComponent{
   name = "Inicia sesión";
 
    usuario = {
     email:'',
     pass:''
   }
-
+  userlogged = this.authservice.getuserlogged();
   constructor(private authservice:AuthService){
   }
 
@@ -24,6 +24,9 @@ export class LoginComponent {
       console.log('login normal', res)
     })
     console.log(this.usuario);
+    this.authservice.getuserlogged().subscribe(res=>{
+      console.log(res?.email)
+    })
   }
   ongooglelogin(){
     const {email, pass} = this.usuario;
@@ -31,6 +34,9 @@ export class LoginComponent {
       console.log('login con google', res)
     })
     console.log(this.usuario);
+    this.authservice.getuserlogged().subscribe(res=>{
+      console.log(res?.email)
+    })
   }
 
 

@@ -43,13 +43,28 @@ export class AuthService {
   }
   async registerwithgoogle (email:string,pass:string){
     try {
-      
+
     } catch (error) {
 
     }
   }
 
-  logout(){
+  async forgotpass (email:string,pass:string){
+    try {
+      return new Promise ((resolve,reject)=>{
+        this.afauth.confirmPasswordReset(pass,pass).then(
+          userData => resolve(userData)
+        )
+      })
+    } catch (error) {
 
+    }
+  }
+
+  getuserlogged(){
+    return this.afauth.authState;
+  }
+  logout(){
+    this.afauth.signOut;
   }
 }

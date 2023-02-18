@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class ForgotComponent {
 name="Recuperar contraseña";
+usuario = {
+  email:'',
+  pass:'',
+}
+
+
+
+enviar(){
+
+}
+
 }

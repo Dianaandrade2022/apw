@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'APW';
-  name = "Página de Inicio"
+  public title:string = 'DAJAC';
 }
+export const title = 'DAJAC';

@@ -8,6 +8,11 @@ import { LoginComponent } from './components/login/login.component';
 import { ForgotComponent } from './components/forgot/forgot.component';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
+import { ChangeComponent } from './components/change/change.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { PeliculasComponent } from './components/peliculas/peliculas.component';
+import { SeriesComponent } from './components/series/series.component';
+import { AnimesComponent } from './components/animes/animes.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCmMSQdZ0KYFetuS6Qb_seQcEsCgJA3UIY",
@@ -23,7 +28,12 @@ const firebaseConfig = {
     AppComponent,
     RegistroComponent,
     LoginComponent,
-    ForgotComponent
+    ForgotComponent,
+    ChangeComponent,
+    InicioComponent,
+    PeliculasComponent,
+    SeriesComponent,
+    AnimesComponent
   ],
   imports: [
     BrowserModule,
