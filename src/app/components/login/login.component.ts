@@ -27,7 +27,6 @@ export class LoginComponent{
     console.log(this.usuario);
     this.authservice.getuserlogged().subscribe(res=>{
       console.log(res?.email)
-      window.location.href = '/inicio'
     })
    } catch (error) {
     console.log(error)
@@ -42,7 +41,6 @@ export class LoginComponent{
       console.log(this.usuario);
       this.authservice.getuserlogged().subscribe(res=>{
         console.log(res?.email)
-      window.location.href = './inicio'
       })
     } catch (error) {
       console.log(error)
