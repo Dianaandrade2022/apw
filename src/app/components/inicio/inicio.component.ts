@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { title } from 'src/app/app.component';
 import { tipo } from './inicio.model';
-
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -9,8 +9,10 @@ import { tipo } from './inicio.model';
 })
 export class InicioComponent {
   title = title;
-  menu: Array<tipo> = Array.from(menu)
+  name="Inicio"
+
 }
+//exportamos datos que usaremos en los demás componentes
 export const menu: tipo[]= [
  {
   name: 'Inicio',
@@ -30,3 +32,4 @@ export const menu: tipo[]= [
 
  }
 ]
+

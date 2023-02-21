@@ -1,23 +1,79 @@
-<nav class="navbar bg-dark navbar-dark navbar-expand-lg">
-  <div class="container">
+
+<nav class="navbar bg-light " *ngIf="userlogged|async; else nose">
+  <div class="container-fluid">
     <a class="navbar-brand" routerLink="inicio">{{title}}</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasnav" >
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-  </div>
-  <div class="offcanvas offcanvas-end bg-dark" id="offcanvasnav">
-    <div class="offcanvas-header bg-light">
-      <h5>Menú</h5>
-      <button type="button" class="btn-close align-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="navbar-body bg-dark">
-      <ul class="navbar-nav text-light m-sm-2 m-lg-0 p-sm-2 p-lg-0">
-        <li class="ion-item"><a type="button" routerLink="login" class="nav-link">Iniciar sesión</a></li>
-        <li class="ion-item"><a type="button" routerLink="registro" class="nav-link">Registrarse</a></li>
-      </ul>
-    </div>
-  </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" *ngIf="userlogged |async as user; else navunlogged">
+      <div class="offcanvas-header" *ngIf="userlogged|async as user;else unlogged">
+        <img src="{{user.photoURL}}" alt="foto de perfil" width="30" height="30" class="d-inline-block align-top">
+        <h5 class="offcanvas-title text-truncate" id="offcanvasNavbarLabel">{{user.email}} </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <ng-template #unlogged>
+        <h5 class="offcanvas-title text-truncate" id="offcanvasNavbarLabel">Bienvenido</h5>
+      </ng-template>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item" *ngFor="let data of menu">
+            <a class="nav-link active" aria-current="page" [href]="data.ruta">{{data.name}}</a>
+          </li>
+           <li>
+            <button class="btn m-0 boder-0 p-1" aria-current="page" (click)="cerrarsesion()">Cerrar sesión</button>
+           </li>
 
+          <div class="nose" *ngIf="userlogged|async as user; else unloggedcanva">
+            <p class="text-success">{{user.email}}<p>
+          </div>
+          <ng-template #unloggedcanva>
+            <h5 class="text-danger">Hola usuario</h5>
+          </ng-template>
+        </ul>
+        <form class="d-flex mt-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit">Buscar</button>
+        </form>
+      </div>
+    </div>
+    <ng-template #navunlogged>
+      <div class="offcanvas offcanvas-end bg-dark" id="offcanvasnav">
+        <div class="offcanvas-header bg-light">
+          <h5>Menú</h5>
+          <button type="button" class="btn-close align-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="navbar-body bg-dark">
+          <ul class="navbar-nav text-light m-sm-2 m-lg-0 p-sm-2 p-lg-0">
+            <li class="ion-item"><a type="button" routerLink="login" class="nav-link">Iniciar sesión</a></li>
+            <li class="ion-item"><a type="button" routerLink="registro" class="nav-link">Registrarse</a></li>
+            <li class="ion-item"><a type="button" routerLink="inicio" class="nav-link">Inicio</a></li>
+          </ul>
+        </div>
+      </div>
+    </ng-template>
+  </div>
 </nav>
-
+<ng-template #nose  >
+  <nav class="navbar bg-dark navbar-dark navbar-expand-lg" >
+    <div class="container">
+      <a class="navbar-brand" routerLink="inicio">{{title}}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasnav" >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="offcanvas offcanvas-end bg-dark" id="offcanvasnav">
+      <div class="offcanvas-header bg-light">
+        <h5>Menú</h5>
+        <button type="button" class="btn-close align-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="navbar-body bg-dark">
+        <ul class="navbar-nav text-light m-sm-2 m-lg-0 p-sm-2 p-lg-0">
+          <li class="ion-item"><a type="button" routerLink="login" class="nav-link">Iniciar sesión</a></li>
+          <li class="ion-item"><a type="button" routerLink="registro" class="nav-link">Registrarse</a></li>
+          <li class="ion-item"><a type="button" routerLink="inicio" class="nav-link">Inicio</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</ng-template>
 <router-outlet></router-outlet>

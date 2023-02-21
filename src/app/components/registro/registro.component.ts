@@ -17,13 +17,33 @@ export class RegistroComponent {
 name = "Registrate";
 
 onregister(){
-  const {email,pass} = this.usuario;
-this.authservice.register(email,pass)
-console.log(this.usuario)
-}
-ongoogleregister(){
-  const {email,pass} = this.usuario;
-this.authservice.registerwithgoogle(email,pass)
-console.log(this.usuario)
-}
+  try {
+   const {email, pass} = this.usuario;
+   this.authservice.register(email,pass).then(res=>{
+     console.log('login normal', res)
+   })
+   console.log(this.usuario);
+   this.authservice.getuserlogged().subscribe(res=>{
+     console.log(res?.email)
+   })
+  } catch (error) {
+   console.log(error)
+  }
+ }
+ ongoogleregister(){
+   try {
+     const {email, pass} = this.usuario;
+     this.authservice.registerwithgoogle().then(res=>{
+       console.log('login con google', res)
+     })
+     console.log(this.usuario);
+     this.authservice.getuserlogged().subscribe(res=>{
+       console.log(res?.email)
+     })
+
+   } catch (error) {
+     console.log(error)
+   }
+ }
+
 }

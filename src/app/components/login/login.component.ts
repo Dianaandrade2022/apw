@@ -19,6 +19,7 @@ export class LoginComponent{
   }
 
   onlogin(){
+   try {
     const {email, pass} = this.usuario;
     this.authservice.login(email,pass).then(res=>{
       console.log('login normal', res)
@@ -26,20 +27,29 @@ export class LoginComponent{
     console.log(this.usuario);
     this.authservice.getuserlogged().subscribe(res=>{
       console.log(res?.email)
+      window.location.href = '/inicio'
     })
+   } catch (error) {
+    console.log(error)
+   }
   }
   ongooglelogin(){
-    const {email, pass} = this.usuario;
-    this.authservice.loginwithgoogle().then(res=>{
-      console.log('login con google', res)
-    })
-    console.log(this.usuario);
-    this.authservice.getuserlogged().subscribe(res=>{
-      console.log(res?.email)
-    })
+    try {
+      const {email, pass} = this.usuario;
+      this.authservice.loginwithgoogle().then(res=>{
+        console.log('login con google', res)
+      })
+      console.log(this.usuario);
+      this.authservice.getuserlogged().subscribe(res=>{
+        console.log(res?.email)
+      window.location.href = './inicio'
+      })
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
-
-
-
 }
+
+

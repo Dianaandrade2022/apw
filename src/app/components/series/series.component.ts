@@ -9,6 +9,6 @@ import { menu } from '../inicio/inicio.component';
 })
 export class SeriesComponent {
 title = title
-name = 'Animes'
+name = 'Series'
   menu: Array<tipo> = Array.from(menu)
 }
